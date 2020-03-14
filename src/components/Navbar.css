@@ -1,0 +1,37 @@
+#header {
+  height: 80px;
+  background: #050417;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.search {
+  background: #ffffff;
+  border-radius: 4px;
+  width: 300px;
+  /* height: 35px; */
+  padding: 10px 20px;
+  border: none;
+}
+
+.search::placeholder {
+  color: #d5d7e5;
+}
+
+#collections {
+  width: 300px;
+  height: 35px;
+  padding: 0px 10px;
+}
+
+#search-btn {
+  border: none;
+  background: #2a2b8d;
+  border-radius: 25px;
+  font-weight: 800;
+  font-size: 12px;
+  color: white;
+  width: 200px;
+  height: 35px;
+}
