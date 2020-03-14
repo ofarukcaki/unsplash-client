@@ -15,8 +15,8 @@ function Navbar() {
         <input className="query" type="text" placeholder="Query" />
       </div>
       <div>
-        <select id="collections">
-          <option value="" disabled selected>
+        <select id="collections" defaultValue="">
+          <option value="" disabled>
             Collections
           </option>
           {collectionList.map(collectionItem => {
