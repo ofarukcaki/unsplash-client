@@ -6,23 +6,40 @@
   align-items: center;
 }
 
-.search {
+.logo {
+  margin: 0px 25px;
+}
+
+#search {
+  width: 80%;
+  display: flex;
+  justify-content: center;
+}
+
+#search div {
+  margin-left: 30px;
+}
+
+.query {
   background: #ffffff;
   border-radius: 4px;
   width: 300px;
-  /* height: 35px; */
+  max-height: 35px;
   padding: 10px 20px;
   border: none;
 }
 
-.search::placeholder {
+.query::placeholder {
   color: #d5d7e5;
 }
 
 #collections {
   width: 300px;
-  height: 35px;
+  height: 36px;
   padding: 0px 10px;
+  border: none;
+  border-radius: 4px;
+  text-transform: capitalize;
 }
 
 #search-btn {
@@ -33,5 +50,5 @@
   font-size: 12px;
   color: white;
   width: 200px;
-  height: 35px;
+  height: 36px;
 }

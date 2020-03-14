@@ -1,24 +1,14 @@
 import React from 'react';
 import './Navbar.css';
+import Search from './Search';
 
 function Navbar() {
   return (
     <div id="header">
-      <div>
+      <div className="logo">
         <Logo width={50} height={50} />
       </div>
-      <div>
-        <input className="search" type="text" placeholder="Query" />
-      </div>
-      <div>
-        <select id="collections">
-          <option value="one">One</option>
-          <option value="two">Two</option>
-        </select>
-      </div>
-      <div>
-        <button id="search-btn">SEARCH</button>
-      </div>
+      <Search />
     </div>
   );
 }
