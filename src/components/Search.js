@@ -1,4 +1,5 @@
 import React from 'react';
+import './Search.css';
 
 const collectionList = [
   'featured',
@@ -29,7 +30,7 @@ function Navbar() {
         </select>
       </div>
       <div>
-        <button id="search-btn">SEARCH</button>
+        <button id="search-btn">search</button>
       </div>
     </div>
   );
