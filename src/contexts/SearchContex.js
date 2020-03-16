@@ -6,7 +6,7 @@ export const SearchContext = createContext();
 class SearchContextProvider extends React.Component {
   state = {
     results: [],
-    loading: false
+    loading: true
   };
 
   /**
@@ -18,7 +18,8 @@ class SearchContextProvider extends React.Component {
     if (cachedResult) {
       // update state
       this.setState({
-        results: JSON.parse(cachedResult)
+        results: JSON.parse(cachedResult),
+        loading: false
       });
       return true;
     }

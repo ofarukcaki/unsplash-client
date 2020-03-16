@@ -18,7 +18,9 @@ function App() {
     <div className="App">
       <SearchContexProvider>
         <Navbar />
-        <Result />
+        <div className="container results-container">
+          <Result />
+        </div>
       </SearchContexProvider>
     </div>
   );
