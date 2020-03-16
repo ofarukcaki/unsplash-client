@@ -3,6 +3,7 @@ import './App.css';
 import Navbar from './components/Navbar';
 import MasonryGrid from './components/MasonryGrid';
 import SearchContexProvider from './contexts/SearchContex';
+import Result from './components/Result';
 
 const collectionList = [
   'featured',
@@ -17,7 +18,7 @@ function App() {
     <div className="App">
       <SearchContexProvider>
         <Navbar />
-        <MasonryGrid c={collectionList} />
+        <Result />
       </SearchContexProvider>
     </div>
   );

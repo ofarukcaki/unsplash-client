@@ -5,7 +5,8 @@ export const SearchContext = createContext();
 
 class SearchContextProvider extends React.Component {
   state = {
-    results: []
+    results: [],
+    loading: false
   };
 
   /**
@@ -26,6 +27,8 @@ class SearchContextProvider extends React.Component {
 
   // retrieve search results from Unsplash api
   retrieveFromApi = params => {
+    this.setState({ loading: true });
+
     // fetch results from api
     axios
       .get('https://api.unsplash.com/search/photos', {
@@ -44,6 +47,9 @@ class SearchContextProvider extends React.Component {
       })
       .catch(error => {
         console.error(error);
+      })
+      .finally(() => {
+        this.setState({ loading: false });
       });
   };
 
