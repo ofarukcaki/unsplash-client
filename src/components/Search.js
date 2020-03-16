@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 import './Search.css';
 import { SearchContext } from '../contexts/SearchContex';
 
@@ -13,6 +13,10 @@ const collectionList = [
 const Search = () => {
   const { makeSearch } = useContext(SearchContext);
   const [query, setQuery] = useState('');
+
+  useEffect(() => {
+    makeSearch({ query: 'Istanbul', per_page: 20 });
+  }, []);
 
   // form submit handler
   const onSubmit = event => {
