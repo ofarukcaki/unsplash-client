@@ -11,7 +11,7 @@ const collectionList = [
 
 function Navbar() {
   return (
-    <div id="search">
+    <form id="search">
       <div>
         <input className="query" type="text" placeholder="Query" />
       </div>
@@ -32,7 +32,7 @@ function Navbar() {
       <div>
         <button id="search-btn">search</button>
       </div>
-    </div>
+    </form>
   );
 }
 
