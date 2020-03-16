@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import './Search.css';
 import { SearchContext } from '../contexts/SearchContex';
 
@@ -12,10 +12,13 @@ const collectionList = [
 
 const Search = () => {
   const { makeSearch } = useContext(SearchContext);
-  console.log(c);
+  const [query, setQuery] = useState('');
 
+  // form submit handler
   const onSubmit = event => {
     event.preventDefault();
+    // call retrieveFromApi() function inside SearchContext
+    makeSearch({ query, per_page: 20 });
   };
 
   return (
@@ -26,7 +29,7 @@ const Search = () => {
           type="text"
           placeholder="Query"
           onChange={e => {
-            this.setState({ query: e.target.value });
+            setQuery(e.target.value);
           }}
         />
       </div>
