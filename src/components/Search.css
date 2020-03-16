@@ -40,4 +40,5 @@
   width: 200px;
   height: 36px;
   text-transform: uppercase;
+  cursor: pointer;
 }

@@ -11,9 +11,10 @@ function Loading() {
 }
 
 function Result() {
-  const { results, loading } = useContext(SearchContext);
-  console.log(loading);
-  if (results.length === 0) {
+  const { results, loading, error, errorText } = useContext(SearchContext);
+  if (error) {
+    return <p style={{ color: 'red' }}>{errorText}</p>;
+  } else if (results.length === 0) {
     // no results
     return <p>No results</p>;
   } else if (loading) {

@@ -6,7 +6,9 @@ export const SearchContext = createContext();
 class SearchContextProvider extends React.Component {
   state = {
     results: [],
-    loading: true
+    loading: true,
+    error: false,
+    errorText: ''
   };
 
   /**
@@ -19,7 +21,8 @@ class SearchContextProvider extends React.Component {
       // update state
       this.setState({
         results: JSON.parse(cachedResult),
-        loading: false
+        loading: false,
+        error: false
       });
       return true;
     }
@@ -41,13 +44,19 @@ class SearchContextProvider extends React.Component {
       .then(response => {
         const { results } = response.data;
         this.setState({
-          results
+          results,
+          error: false
         });
         // update localstorage
         localStorage.setItem(JSON.stringify(params), JSON.stringify(results));
       })
       .catch(error => {
         console.error(error);
+        this.setState({
+          error: true,
+          errorText:
+            'There is a problem while fetching results from Unsplash API.'
+        });
       })
       .finally(() => {
         this.setState({ loading: false });

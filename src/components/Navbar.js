@@ -5,9 +5,9 @@ import Search from './Search';
 function Navbar() {
   return (
     <div id="header">
-      <div className="logo">
+      <a className="logo" href="/">
         <Logo width={50} height={50} />
-      </div>
+      </a>
       <Search />
     </div>
   );
