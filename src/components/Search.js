@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import './Search.css';
+import { SearchContext } from '../contexts/SearchContex';
 
 const collectionList = [
   'featured',
@@ -9,41 +10,47 @@ const collectionList = [
   'architecture'
 ];
 
-class Navbar extends React.Component {
-  constructor(props) {
-    super(props);
-  }
+const Search = () => {
+  const { makeSearch } = useContext(SearchContext);
+  console.log(c);
 
-  onSubmit = event => {
+  const onSubmit = event => {
     event.preventDefault();
   };
 
-  render() {
-    return (
-      <form id="search" onSubmit={this.onSubmit}>
-        <div>
-          <input className="query" type="text" placeholder="Query" />
-        </div>
-        <div>
-          <select id="collections" defaultValue="">
-            <option value="" disabled>
-              Collections
-            </option>
-            {collectionList.map(collectionItem => {
-              return (
-                <option key={collectionItem} value={collectionItem}>
-                  {collectionItem}
-                </option>
-              );
-            })}
-          </select>
-        </div>
-        <div>
-          <button id="search-btn">search</button>
-        </div>
-      </form>
-    );
-  }
-}
+  return (
+    <form id="search" onSubmit={onSubmit}>
+      <div>
+        <input
+          className="query"
+          type="text"
+          placeholder="Query"
+          onChange={e => {
+            this.setState({ query: e.target.value });
+          }}
+        />
+      </div>
+      <div>
+        <select id="collections" defaultValue="">
+          <option value="" disabled>
+            Collections
+          </option>
+          {collectionList.map(collectionItem => {
+            return (
+              <option key={collectionItem} value={collectionItem}>
+                {collectionItem}
+              </option>
+            );
+          })}
+        </select>
+      </div>
+      <div>
+        <button id="search-btn" type="submit">
+          search
+        </button>
+      </div>
+    </form>
+  );
+};
 
-export default Navbar;
+export default Search;

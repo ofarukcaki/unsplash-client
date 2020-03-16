@@ -1,6 +1,7 @@
 import React from 'react';
 import './Navbar.css';
 import Search from './Search';
+import SearchContexProvider from '../contexts/SearchContex';
 
 function Navbar() {
   return (
@@ -8,7 +9,9 @@ function Navbar() {
       <div className="logo">
         <Logo width={50} height={50} />
       </div>
-      <Search />
+      <SearchContexProvider>
+        <Search />
+      </SearchContexProvider>
     </div>
   );
 }

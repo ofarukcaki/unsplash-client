@@ -1,5 +1,4 @@
 import React, { createContext } from 'react';
-const axios = require('axios');
 
 export const SearchContext = createContext();
 
@@ -13,15 +12,14 @@ class SearchContextProvider extends React.Component {
   retrieveFromCache = () => {};
 
   // retrieve search results from Unsplash api
-  retrieveFromApi = () => {};
+  retrieveFromApi = param => {
+    console.log(param);
+  };
 
   render() {
     return (
       <SearchContext.Provider
-        value={{
-          ...this.state,
-          search: this.retrieveFromApi
-        }}
+        value={{ ...this.state, makeSearch: this.retrieveFromApi }}
       >
         {this.props.children}
       </SearchContext.Provider>

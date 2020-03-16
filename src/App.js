@@ -2,6 +2,7 @@ import React from 'react';
 import './App.css';
 import Navbar from './components/Navbar';
 import MasonryGrid from './components/MasonryGrid';
+import SearchContexProvider from './contexts/SearchContex';
 
 const collectionList = [
   'featured',
@@ -14,8 +15,10 @@ const collectionList = [
 function App() {
   return (
     <div className="App">
-      <Navbar />
-      <MasonryGrid c={collectionList}/>
+      <SearchContexProvider>
+        <Navbar />
+        <MasonryGrid c={collectionList} />
+      </SearchContexProvider>
     </div>
   );
 }
