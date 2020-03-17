@@ -4,10 +4,12 @@
   display: flex;
   justify-content: space-around;
   align-items: center;
+  /* make it fixed */
+  position: fixed;
+  top: 0;
+  width: 100%;
 }
 
 .logo {
   margin: 0px 25px;
 }
-
-
