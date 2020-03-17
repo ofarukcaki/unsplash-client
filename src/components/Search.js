@@ -3,11 +3,14 @@ import './Search.css';
 import { SearchContext } from '../contexts/SearchContex';
 
 const collectionList = [
-  'featured',
-  'walpapers',
-  'nature',
-  'textures & patterns',
-  'architecture'
+  { name: 'wallpapers', id: 1065976 },
+  { name: 'nature', id: 327760 },
+  { name: 'textures & patterns', id: 3330445 },
+  { name: 'architecture', id: 3348849 },
+  { name: 'gradient nation', id: 3694365 },
+  { name: 'cclor - neutral tones', id: 3150958 },
+  { name: 'animals', id: 181581 },
+  { name: 'landscape', id: 827743 }
 ];
 
 const Search = () => {
@@ -44,8 +47,8 @@ const Search = () => {
           </option>
           {collectionList.map(collectionItem => {
             return (
-              <option key={collectionItem} value={collectionItem}>
-                {collectionItem}
+              <option key={collectionItem.id} value={collectionItem.id}>
+                {collectionItem.name}
               </option>
             );
           })}
