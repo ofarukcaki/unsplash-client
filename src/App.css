@@ -23,8 +23,20 @@
 .loader {
   display: flex;
   justify-content: center;
+  margin-top: 100px;
 }
 
 .results-container {
-  margin-top: 50px;
+  padding-top: 80px;
+  margin-top: 40px;
+  display: flex;
+  justify-content: center;
+}
+
+.error {
+  color: #ff4a4a;
+  background-color: #ff4a4a27;
+  display: inline;
+  padding: 15px 20px;
+  border-radius: 4px;
 }
