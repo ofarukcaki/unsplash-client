@@ -3,12 +3,13 @@ import './Search.css';
 import { SearchContext } from '../contexts/SearchContex';
 
 const collectionList = [
+  { name: 'all', id: '' },
   { name: 'wallpapers', id: 1065976 },
   { name: 'nature', id: 327760 },
   { name: 'textures & patterns', id: 3330445 },
   { name: 'architecture', id: 3348849 },
   { name: 'gradient nation', id: 3694365 },
-  { name: 'cclor - neutral tones', id: 3150958 },
+  { name: 'color - neutral tones', id: 3150958 },
   { name: 'animals', id: 181581 },
   { name: 'landscape', id: 827743 }
 ];
@@ -16,6 +17,7 @@ const collectionList = [
 const Search = () => {
   const { makeSearch } = useContext(SearchContext);
   const [query, setQuery] = useState('');
+  const [collections, setcollection] = useState('');
 
   useEffect(() => {
     makeSearch({ query: 'Istanbul', per_page: 20 });
@@ -25,7 +27,7 @@ const Search = () => {
   const onSubmit = event => {
     event.preventDefault();
     // call retrieveFromApi() function inside SearchContext
-    makeSearch({ query, per_page: 20 });
+    makeSearch({ query, collections, per_page: 20 });
   };
 
   return (
@@ -41,7 +43,13 @@ const Search = () => {
         />
       </div>
       <div>
-        <select id="collections" defaultValue="">
+        <select
+          id="collections"
+          defaultValue=""
+          onChange={e => {
+            setcollection(e.target.value);
+          }}
+        >
           <option value="" disabled>
             Collections
           </option>
