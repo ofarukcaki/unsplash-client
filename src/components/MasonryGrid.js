@@ -3,7 +3,13 @@ import Masonry from 'react-masonry-css';
 import './MasonryGrid.css';
 
 function ResultItem(props) {
-  return <img src={props.urls.small} alt={props.alt_description} />;
+  return (
+    <div>
+      <a href={props.links.html} target="_blank" title={props.alt_description}>
+        <img src={props.urls.small} alt={props.alt_description} />
+      </a>
+    </div>
+  );
 }
 
 function MasonryGrid(props) {
