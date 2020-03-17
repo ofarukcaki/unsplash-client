@@ -1,6 +1,8 @@
 import React, { useContext } from 'react';
 import MasonryGrid from './MasonryGrid';
 import { SearchContext } from '../contexts/SearchContex';
+import './Result.css';
+import ghostImg from '../static/img/Ghost-big.png';
 
 function Loading() {
   return (
@@ -10,13 +12,22 @@ function Loading() {
   );
 }
 
+function NoResult() {
+  return (
+    <div className="no-result">
+      <p>We couldn't find anything that matches your search...</p>
+      <img src={ghostImg} alt="" />
+    </div>
+  );
+}
+
 function Result() {
   const { results, loading, error, errorText } = useContext(SearchContext);
   if (!loading && error) {
-    return <p style={{ color: 'red' }}>{errorText}</p>;
+    return <p className="error">{errorText}</p>;
   } else if (results.length === 0) {
     // no results
-    return <p>No results</p>;
+    return <NoResult />;
   } else if (loading) {
     return <Loading />;
   } else {

@@ -1,0 +1,16 @@
+.no-result {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.no-result p {
+  font-size: 20px;
+  background: #0000000d;
+  padding: 15px 20px;
+  border-radius: 4px;
+}
+
+.no-result img {
+  max-height: 50vh;
+}
