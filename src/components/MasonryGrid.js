@@ -4,11 +4,14 @@ import './MasonryGrid.css';
 
 function ResultItem(props) {
   return (
-    <div>
-      <a href={props.links.html} target="_blank" title={props.alt_description}>
+    <a href={props.links.html} target="_blank" title={props.alt_description}>
+      <div style={{ position: 'relative', display: 'inline-block' }}>
         <img src={props.urls.small} alt={props.alt_description} />
-      </a>
-    </div>
+        <div className="overlay">
+          <div className="overlay-1"></div>
+        </div>
+      </div>
+    </a>
   );
 }
 
@@ -16,7 +19,7 @@ function MasonryGrid(props) {
   return (
     <div className="container">
       <Masonry
-        breakpointCols={{ default: 3, 1194: 2, 700: 1 }}
+        breakpointCols={{ default: 3, 1194: 2, 860: 1 }}
         className="my-masonry-grid"
         columnClassName="my-masonry-grid_column"
       >
