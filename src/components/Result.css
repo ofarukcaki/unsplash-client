@@ -14,3 +14,9 @@
 .no-result img {
   max-height: 50vh;
 }
+
+.loader {
+  display: flex;
+  justify-content: center;
+  margin-top: 100px;
+}
