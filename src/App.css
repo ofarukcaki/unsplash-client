@@ -20,16 +20,11 @@
   }
 }
 
-.loader {
-  display: flex;
-  justify-content: center;
-  margin-top: 100px;
-}
-
 .results-container {
   padding-top: 80px;
   margin-top: 40px;
   display: flex;
+  flex-direction: column;
   justify-content: center;
 }
 

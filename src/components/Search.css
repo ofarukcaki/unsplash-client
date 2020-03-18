@@ -34,6 +34,10 @@
   text-transform: capitalize;
 }
 
+#collections option{
+  font-size: 14px;
+}
+
 #search-btn {
   border: none;
   background: #2a2b8d;
