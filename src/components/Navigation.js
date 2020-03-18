@@ -3,7 +3,7 @@ import './Navigation.css';
 import { SearchContext } from '../contexts/SearchContex';
 
 function Navigation() {
-  const { page, total_pages } = useContext(SearchContext);
+  const { page, total_pages, prevPage, nextPage } = useContext(SearchContext);
 
   // conditions
   const next = page < total_pages;
@@ -11,8 +11,12 @@ function Navigation() {
 
   return (
     <div id="navigation">
-      <button className={!previous ? 'disabled' : null}>Previous</button>
-      <button className={!next ? 'disabled' : null}>Next</button>
+      <button className={!previous ? 'disabled' : null} onClick={prevPage}>
+        Previous
+      </button>
+      <button className={!next ? 'disabled' : null} onClick={nextPage}>
+        Next
+      </button>
     </div>
   );
 }

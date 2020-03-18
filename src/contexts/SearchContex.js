@@ -18,13 +18,16 @@ class SearchContextProvider extends React.Component {
    * return results from localstorage if already exist
    */
   retrieveFromCache = params => {
-    const cachedResult = localStorage.getItem(JSON.stringify(params));
+    let cachedResult = localStorage.getItem(JSON.stringify(params));
     if (cachedResult) {
       // update state
+      cachedResult = JSON.parse(cachedResult);
       this.setState({
-        results: JSON.parse(cachedResult).results,
+        results: cachedResult.results,
         loading: false,
-        error: false
+        error: false,
+        total_pages: cachedResult.total_pages,
+        page: params.page ? params.page : 1
       });
       return true;
     }
@@ -45,11 +48,12 @@ class SearchContextProvider extends React.Component {
       })
       .then(response => {
         const { results } = response.data;
+        console.log(response.data);
         this.setState({
           results,
           error: false,
           total_pages: response.data.total_pages,
-          page: 1
+          page: params.page ? params.page : 1
         });
         // update localstorage
         localStorage.setItem(
@@ -71,6 +75,7 @@ class SearchContextProvider extends React.Component {
   };
 
   search = params => {
+    console.log('SEARCHING:', params);
     const { query, collections } = params;
     this.setState({ query, collections });
     // check the cache first
@@ -80,10 +85,35 @@ class SearchContextProvider extends React.Component {
     }
   };
 
+  nextPage = () => {
+    const _state = this.state;
+    const params = {
+      query: _state.query,
+      page: _state.page + 1,
+      per_page: 20
+    };
+    this.search(params);
+  };
+
+  prevPage = () => {
+    const _state = this.state;
+    const params = {
+      query: _state.query,
+      page: _state.page - 1,
+      per_page: 20
+    };
+    this.search(params);
+  };
+
   render() {
     return (
       <SearchContext.Provider
-        value={{ ...this.state, makeSearch: this.search }}
+        value={{
+          ...this.state,
+          makeSearch: this.search,
+          prevPage: this.prevPage,
+          nextPage: this.nextPage
+        }}
       >
         {this.props.children}
       </SearchContext.Provider>
