@@ -48,7 +48,6 @@ class SearchContextProvider extends React.Component {
       })
       .then(response => {
         const { results } = response.data;
-        console.log(response.data);
         this.setState({
           results,
           error: false,
@@ -75,7 +74,6 @@ class SearchContextProvider extends React.Component {
   };
 
   search = params => {
-    console.log('SEARCHING:', params);
     const { query, collections } = params;
     this.setState({ query, collections });
     // check the cache first
