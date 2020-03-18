@@ -1,15 +1,43 @@
 #header {
-  height: 80px;
+  /* height: 80px; */
+  height: auto;
+  min-height: 80px;
   background: #050417;
-  display: flex;
+  /* display: flex;
   justify-content: space-around;
-  align-items: center;
+  align-items: center; */
   /* make it fixed */
   position: fixed;
   top: 0;
   width: 100%;
+  /* grid */
+  display: grid;
+  align-items: center;
+  grid-template-columns: 150px auto;
+  grid-template-areas: 'logo search';
+  z-index: 10;
 }
 
 .logo {
   margin: 0px 25px;
+  grid-area: logo;
+}
+
+/* responsiveness */
+@media (max-width: 992px) {
+  #header {
+    grid-template-rows: 80px auto;
+    grid-template-columns: auto;
+    grid-template-areas:
+      'logo'
+      'search';
+  }
+
+  #search {
+    margin-bottom: 20px;
+  }
+
+  .results-container {
+    padding-top: 136px;
+  }
 }
