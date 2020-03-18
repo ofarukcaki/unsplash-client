@@ -1,17 +1,9 @@
 import React from 'react';
 import './App.css';
 import Navbar from './components/Navbar';
-import MasonryGrid from './components/MasonryGrid';
 import SearchContexProvider from './contexts/SearchContex';
 import Result from './components/Result';
-
-const collectionList = [
-  'featured',
-  'walpapers',
-  'nature',
-  'textures & patterns',
-  'architecture'
-];
+import Navigation from './components/Navigation';
 
 function App() {
   return (
@@ -20,6 +12,7 @@ function App() {
         <Navbar />
         <div className="container results-container">
           <Result />
+          <Navigation />
         </div>
       </SearchContexProvider>
     </div>
