@@ -8,7 +8,9 @@ class SearchContextProvider extends React.Component {
     results: [],
     loading: true,
     error: false,
-    errorText: ''
+    errorText: '',
+    total_pages: null,
+    page: 1
   };
 
   /**
@@ -20,7 +22,7 @@ class SearchContextProvider extends React.Component {
     if (cachedResult) {
       // update state
       this.setState({
-        results: JSON.parse(cachedResult),
+        results: JSON.parse(cachedResult).results,
         loading: false,
         error: false
       });
@@ -45,10 +47,15 @@ class SearchContextProvider extends React.Component {
         const { results } = response.data;
         this.setState({
           results,
-          error: false
+          error: false,
+          total_pages: response.data.total_pages,
+          page: 1
         });
         // update localstorage
-        localStorage.setItem(JSON.stringify(params), JSON.stringify(results));
+        localStorage.setItem(
+          JSON.stringify(params),
+          JSON.stringify(response.data)
+        );
       })
       .catch(error => {
         console.error(error);
@@ -64,6 +71,8 @@ class SearchContextProvider extends React.Component {
   };
 
   search = params => {
+    const { query, collections } = params;
+    this.setState({ query, collections });
     // check the cache first
     if (!this.retrieveFromCache(params)) {
       // if there is no cached result for the query call retrieveFromApi
