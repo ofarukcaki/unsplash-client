@@ -1,0 +1,31 @@
+/* center horizontally and add some margin*/
+#navigation {
+  margin: 20px auto;
+}
+
+#navigation button {
+  background: #ffffff;
+  border: 1px solid #d5d7e5;
+  border-radius: 2px;
+  width: 93px;
+  height: 42px;
+  padding: 11px 17px;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 19px;
+  color: #2a2b8d;
+}
+
+#navigation button.disabled {
+  opacity: 0.4;
+}
+
+/* remove default outline */
+#navigation button:focus {
+  outline: none;
+}
+
+/* space between two buttons */
+#navigation button:first-child {
+  margin-right: 10px;
+}
