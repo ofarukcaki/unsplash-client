@@ -13,17 +13,26 @@ function Navigation() {
   } = useContext(SearchContext);
 
   // conditions
-  const next = page < total_pages;
   const previous = page > 1;
+  const next = page < total_pages;
+
+  // prevent being clicked if buttons are disabled
+  const goPrev = () => {
+    if (previous) prevPage();
+  };
+
+  const goNext = () => {
+    if (next) nextPage();
+  };
 
   // if there is no results then don't render nagigation buttons
   if (results.length !== 0 && !loading) {
     return (
       <div id="navigation">
-        <button className={!previous ? 'disabled' : null} onClick={prevPage}>
+        <button className={!previous ? 'disabled' : null} onClick={goPrev}>
           Previous
         </button>
-        <button className={!next ? 'disabled' : null} onClick={nextPage}>
+        <button className={!next ? 'disabled' : null} onClick={goNext}>
           Next
         </button>
       </div>
